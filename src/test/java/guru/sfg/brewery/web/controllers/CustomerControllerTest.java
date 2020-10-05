@@ -77,6 +77,7 @@ class CustomerControllerTest {
                 .andExpect(model().attributeExists("customer"));
         verifyZeroInteractions(customerRepository);
     }
+
 //ToDO: Fix stubbing error
     @Test
     @Disabled

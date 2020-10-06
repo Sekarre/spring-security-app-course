@@ -1,7 +1,6 @@
 package guru.sfg.brewery.web.controllers.api;
 
 import guru.sfg.brewery.domain.Beer;
-import guru.sfg.brewery.repositories.BeerOrderRepository;
 import guru.sfg.brewery.repositories.BeerRepository;
 import guru.sfg.brewery.web.controllers.BaseIT;
 import guru.sfg.brewery.web.model.BeerStyleEnum;

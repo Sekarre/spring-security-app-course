@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @RequiredArgsConstructor
@@ -20,6 +21,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
+    private final PersistentTokenRepository persistentTokenRepository;
 
     @Bean
     public SecurityEvaluationContextExtension securityEvaluationContextExtension() {
@@ -59,9 +61,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 })
                 .httpBasic()
                 .and().csrf().ignoringAntMatchers("/h2-console/**", "/api/**")
-                .and().rememberMe()
-                    .key("sfg-key")
+                .and()
+                    .rememberMe()
+                    .tokenRepository(persistentTokenRepository)
                     .userDetailsService(userDetailsService);
+//                    .rememberMe()     //Hash-based token
+//                    .key("sfg-key")
+//                    .userDetailsService(userDetailsService);
 
         //h2 console
         http.headers().frameOptions().sameOrigin();

@@ -63,6 +63,15 @@ public class User implements UserDetails, CredentialsContainer {
     @Builder.Default
     private boolean enabled = true;
 
+    @Builder.Default
+    private boolean userGoogle2fa = false;
+
+    @Transient
+    private boolean google2faRequired = true;
+
+    private String google2faSecret;
+
+
     public boolean isAccountNonExpired() {
         return this.accountNonExpired;
     }

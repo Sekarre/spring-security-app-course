@@ -64,7 +64,7 @@ public class User implements UserDetails, CredentialsContainer {
     private boolean enabled = true;
 
     @Builder.Default
-    private boolean userGoogle2fa = false;
+    private Boolean useGoogle2fa = false;
 
     @Transient
     private boolean google2faRequired = true;

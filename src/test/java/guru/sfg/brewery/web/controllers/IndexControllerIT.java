@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -35,6 +37,13 @@ public class IndexControllerIT extends BaseIT {
 
     @MockBean
     BeerOrderService beerOrderService;
+
+    @MockBean
+    UserDetailsService userDetailsService;
+
+    @MockBean
+    PersistentTokenRepository persistentTokenRepository;
+
 
 
     @Test
